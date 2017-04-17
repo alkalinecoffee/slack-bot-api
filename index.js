@@ -52,11 +52,11 @@ class Bot extends EventEmitter {
          var proxy_options = {};
          var proxy_uri = process.env.https_proxy;
 
-         if (proxy_uri) {
-             var opts = url.parse(proxy_uri);
-             proxy_options.agent = new HttpsProxyAgent(opts);
-             request.defaults.proxy = proxy_uri;
-         }
+         // if (proxy_uri) {
+         //     var opts = url.parse(proxy_uri);
+         //     proxy_options.agent = new HttpsProxyAgent(opts);
+         //     request.defaults.proxy = proxy_uri;
+         // }
 
          this.ws = new WebSocket(this.wsUrl, proxy_options);
 
