@@ -50,7 +50,7 @@ class Bot extends EventEmitter {
      */
      connect() {
          var proxy_options = {};
-         var proxy_uri = process.env.https_proxy;
+         // var proxy_uri = process.env.https_proxy;
 
          // if (proxy_uri) {
          //     var opts = url.parse(proxy_uri);
@@ -58,7 +58,7 @@ class Bot extends EventEmitter {
          //     request.defaults.proxy = proxy_uri;
          // }
 
-         this.ws = new WebSocket(this.wsUrl, proxy_options);
+         this.ws = new WebSocket(this.wsUrl); //, proxy_options);
 
          this.ws.on('open', function(data) {
              this.emit('open', data);
