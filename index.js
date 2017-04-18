@@ -58,7 +58,7 @@ class Bot extends EventEmitter {
              request.defaults.proxy = proxy_uri;
          }
 
-         this.ws = new WebSocket(this.wsUrl); //, proxy_options);
+         this.ws = new WebSocket(this.wsUrl, proxy_options);
 
          this.ws.on('open', function(data) {
              this.emit('open', data);
