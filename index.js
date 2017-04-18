@@ -6,8 +6,8 @@ var Vow = require('vow');
 var extend = require('extend');
 var WebSocket = require('ws');
 var EventEmitter = require('events').EventEmitter;
-// var HttpsProxyAgent = require('https-proxy-agent');
-// var url = require('url');
+var HttpsProxyAgent = require('https-proxy-agent');
+var url = require('url');
 
 class Bot extends EventEmitter {
     /**
@@ -49,14 +49,14 @@ class Bot extends EventEmitter {
      * Establish a WebSocket connection
      */
      connect() {
-         // var proxy_options = {};
-         // var proxy_uri = process.env.https_proxy;
+         var proxy_options = {};
+         var proxy_uri = process.env.https_proxy;
 
-         // if (proxy_uri) {
-         //     var opts = url.parse(proxy_uri);
-         //     proxy_options.agent = new HttpsProxyAgent(opts);
-         //     request.defaults.proxy = proxy_uri;
-         // }
+         if (proxy_uri) {
+             var opts = url.parse(proxy_uri);
+             proxy_options.agent = new HttpsProxyAgent(opts);
+             request.defaults.proxy = proxy_uri;
+         }
 
          this.ws = new WebSocket(this.wsUrl); //, proxy_options);
 
